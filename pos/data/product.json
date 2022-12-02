@@ -1,0 +1,289 @@
+{
+  "products": [
+    {
+      "style": "stock",
+      "item_id": "MjA-",
+      "item_name": "DM SPAGHETTI SAUCE FILIPINO  STYLE 500GM",
+      "category_id": "Mw--",
+      "image": "./external/cm.png",
+      "barcodes": [
+        {
+          "barcode": "48000245800016",
+          "stk_qty": 276,
+          "brd_unit_rate": "7.08"
+        }
+      ],
+      "unit_rate": "7.08"
+    },
+    {
+      "style": "stock",
+      "item_id": "MjI-",
+      "item_name": "DM SPAGHETTI SAUCE SWEET STYLE 250GM",
+      "category_id": "Mw--",
+      "image": "./external/cm.png",
+      "barcodes": [
+        {
+          "barcode": "4800024555779",
+          "stk_qty": 24,
+          "brd_unit_rate": "3.95"
+        }
+      ],
+      "unit_rate": "3.95"
+    },
+    {
+      "style": "stock",
+      "item_id": "MjM-",
+      "item_name": "DM SPAGHETTI SAUCE SWEET STYLE 500GM",
+      "category_id": "Mw--",
+      "image": "./external/cm.png",
+      "barcodes": [
+        {
+          "barcode": "4800024579997",
+          "stk_qty": 12,
+          "brd_unit_rate": "7.29"
+        }
+      ],
+      "unit_rate": "7.29"
+    },
+    {
+      "style": "stock",
+      "item_id": "MjU-",
+      "item_name": "DM TOMATO SAUCE FILIPINO STYLE 250GM",
+      "category_id": "Mw--",
+      "image": "./external/cm.png",
+      "barcodes": [
+        {
+          "barcode": "4800024579997",
+          "stk_qty": 144,
+          "brd_unit_rate": "2.91"
+        }
+      ],
+      "unit_rate": "2.91"
+    },
+    {
+      "style": "stock",
+      "item_id": "Mw--",
+      "item_name": "GATORADE BLUE BOLT 500ML",
+      "category_id": "MQ--",
+      "image": "./external/cm.png",
+      "barcodes": [
+        {
+          "barcode": "4803925061141",
+          "stk_qty": 816,
+          "brd_unit_rate": "4.58"
+        }
+      ],
+      "unit_rate": "4.58"
+    },
+    {
+      "style": "stock",
+      "item_id": "OA--",
+      "item_name": "GATORADE GRAPES 500ML",
+      "category_id": "MQ--",
+      "image": "./external/cm.png",
+      "barcodes": [
+        {
+          "barcode": "4803925061110",
+          "stk_qty": 192,
+          "brd_unit_rate": "4.58"
+        }
+      ],
+      "unit_rate": "4.58"
+    },
+    {
+      "style": "stock",
+      "item_id": "Nw--",
+      "item_name": "GATORADE ORANGE CHILL 500ML",
+      "category_id": "MQ--",
+      "image": "./external/cm.png",
+      "barcodes": [
+        {
+          "barcode": "4803925061127",
+          "stk_qty": 2976,
+          "brd_unit_rate": "4.58"
+        }
+      ],
+      "unit_rate": "4.58"
+    },
+    {
+      "style": "stock",
+      "item_id": "Mjc-",
+      "item_name": "GROWERS SAVOURY HOT 80G",
+      "category_id": "Mg--",
+      "image": "./external/cm.png",
+      "barcodes": [
+        {
+          "barcode": "4800054112287",
+          "stk_qty": 1200,
+          "brd_unit_rate": "5"
+        }
+      ],
+      "unit_rate": "5"
+    },
+    {
+      "style": "stock",
+      "item_id": "MTA-",
+      "item_name": "J&J CHIPPY BBQ 110GM",
+      "category_id": "NA--",
+      "image": "./external/cm.png",
+      "barcodes": [
+        {
+          "barcode": "4800016643095",
+          "stk_qty": 475,
+          "brd_unit_rate": "3.5"
+        },
+        {
+          "barcode": "4800016643091",
+          "stk_qty": 1475,
+          "brd_unit_rate": "2.5"
+        }
+      ],
+      "unit_rate": "3"
+    },
+    {
+      "style": "stock",
+      "item_id": "Mg--",
+      "item_name": "J&J MR. CHIPS NACHO CHEESE 100GM",
+      "category_id": "NA--",
+      "image": "./external/cm.png",
+      "barcodes": [
+        {
+          "barcode": "4800016653094",
+          "stk_qty": 400,
+          "brd_unit_rate": "2"
+        },
+        {
+          "barcode": "4800016653091",
+          "stk_qty": 2350,
+          "brd_unit_rate": "10"
+        },
+        {
+          "barcode": "4803925061141",
+          "stk_qty": 4300,
+          "brd_unit_rate": "3.2"
+        }
+      ],
+      "unit_rate": "3.2"
+    },
+    {
+      "style": "stock",
+      "item_id": "NA--",
+      "item_name": "J&J NOVA COUNTRY CHEDDAR 85GM",
+      "category_id": "NA--",
+      "image": "./external/cm.png",
+      "barcodes": [
+        {
+          "barcode": "4800016663505",
+          "stk_qty": 21,
+          "brd_unit_rate": "3.5"
+        },
+        {
+          "barcode": "4800016663501",
+          "stk_qty": 1021,
+          "brd_unit_rate": "4.5"
+        },
+        {
+          "barcode": "4800016653094",
+          "stk_qty": 400,
+          "brd_unit_rate": "5"
+        }
+      ],
+      "unit_rate": "3.5"
+    },
+    {
+      "style": "stock",
+      "item_id": "NQ--",
+      "item_name": "J&J PIATTOS CHEESE 85GM ",
+      "category_id": "NA--",
+      "image": "./external/cm.png",
+      "barcodes": [
+        {
+          "barcode": "4800016644504",
+          "stk_qty": 4700,
+          "brd_unit_rate": "3.5"
+        }
+      ],
+      "unit_rate": "3.5"
+    },
+    {
+      "style": "stock",
+      "item_id": "OQ--",
+      "item_name": "J&J PIATTOS SOUR CREAM 85GM",
+      "category_id": "NA--",
+      "image": "./external/cm.png",
+      "barcodes": [
+        {
+          "barcode": "4800016671501",
+          "stk_qty": 1150,
+          "brd_unit_rate": "3"
+        },
+        {
+          "barcode": "4800016671500",
+          "stk_qty": 2150,
+          "brd_unit_rate": "30"
+        }
+      ],
+      "unit_rate": "3"
+    },
+    {
+      "style": "stock",
+      "item_id": "MTE-",
+      "item_name": "NAGARAYA BBQ 160GM",
+      "category_id": "Mg--",
+      "image": "./external/cm.png",
+      "barcodes": [
+        {
+          "barcode": "731126103169",
+          "stk_qty": 480,
+          "brd_unit_rate": "3.65"
+        }
+      ],
+      "unit_rate": "3.65"
+    },
+    {
+      "style": "stock",
+      "item_id": "MTM-",
+      "item_name": "NAGARAYA GARLIC 160GM",
+      "category_id": "Mg--",
+      "image": "./external/cm.png",
+      "barcodes": [
+        {
+          "barcode": "731126104166",
+          "stk_qty": 591,
+          "brd_unit_rate": "3.75"
+        }
+      ],
+      "unit_rate": "3.75"
+    },
+    {
+      "style": "stock",
+      "item_id": "MTQ-",
+      "item_name": "NAGARAYA HOT SPICY 160GM",
+      "category_id": "Mg--",
+      "image": "./external/cm.png",
+      "barcodes": [
+        {
+          "barcode": "731126105163",
+          "stk_qty": 576,
+          "brd_unit_rate": "4"
+        }
+      ],
+      "unit_rate": "4"
+    },
+    {
+      "style": "stock",
+      "item_id": "MTU-",
+      "item_name": "NAGARAYA ORGINAL 160GM",
+      "category_id": "Mg--",
+      "image": "./external/cm.png",
+      "barcodes": [
+        {
+          "barcode": "731126101165",
+          "stk_qty": 480,
+          "brd_unit_rate": "4"
+        }
+      ],
+      "unit_rate": "4"
+    }
+  ]
+}

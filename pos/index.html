@@ -4,393 +4,380 @@
 <head>
     <meta charset="utf-8" />
     <title>Big Bazar</title>
-    <link href="https://fonts.googleapis.com/css?family=Reenie+Beanie&display=swap" rel="stylesheet" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Reenie+Beanie&display=swap" rel="stylesheet" />-->
     <link rel="stylesheet" href="style.css" />
-    <link rel="manifest" href="manifest.json" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    <!--<link rel="manifest" href="manifest.json" />-->
+    <link href="./external/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+
+    <link rel="stylesheet" href="./external/bootstrap-icons.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <style>
-        .cl_red {
-            background-color: #607EAA;
-            height: 5%;
-            font-weight: bold;
-            color: #F5F5F5;
-        }
 
-        .cl_green {
-            background-color: #F5F5F5;
-            height: 45%;
-        }
-
-        .cl_blue {
-            background-color: #607EAA;
-            height: 15%;
-            color: #F5F5F5;
-            font-weight: bold;
-        }
-
-        .cl_yellow {
-            background-color: #A6D1E6;
-            height: 35%;
-        }
-
-        .cl_category_tag {
-            background-color: #607EAA;
-            color: #F5F5F5;
-        }
-
-        .cl_search_area {
-            background-color: #607EAA;
-            height: 10%;
-        }
-
-        .background_dark_blue {
-            background-color: #2B4865;
-        }
-
-        .products_section {
-            background-color: #F5F5F5;
-            height: 90%;
-        }
-
-        html,
-        body {
-            height: 100%;
-            box-sizing: border-box;
-        }
-
-        .height_100 {
-            height: 100%;
-        }
-
-        .height_10 {
-            height: 10%;
-            padding: 0px 4px 4px 4px;
-        }
-        .cl_options{
-            background-color: #2B4865;
-            min-height: 4rem; 
-            text-align: center;
-
-        }
-    </style>
 </head>
 
-<body>
-    <div class="container-fluid height_100">
-        <div class="row height_100">
-            <div class="col-sm-7">
-                <div class="row cl_red">
-                    <div class="col-sm-12">
-                        <div class="row">
-                            <div class="col-sm-4">
-                                <span>
-                                    Order Type : Standard
-                                </span>
-                            </div>
-                            <div class="col-sm-4">
-                                <span>
-                                    Customer Name : Sanoop
-                                </span>
-                            </div>
-                            <div class="col-sm-4">
-                                <span>
-                                    Mobile : 8547905327
-                                </span>
-                            </div>
-                        </div>
-                    </div>
+<body onload="onLoadWrapper()" style="background-color: #EDF1F4;">
+    <!--Payment Confirmation Form-->
+    <div class="modal fade" id="exampleModalPayment" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Payment Confirmation</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="row cl_green">
-                    <div class="col-sm-12">
-                        <div class="row fw-bold border-bottom">
-                            <div class="col-sm-1">Sl No</div>
-                            <div class="col-sm-5">Description</div>
-                            <div class="col-sm-2">Unit Price</div>
-                            <div class="col-sm-2">Qty</div>
-                            <div class="col-sm-2">Total</div>
+                <div class="modal-body">
+                    <form>
+                        <div class="row mb-3">
+                            <label for="recipient-name" class="col-sm-6 col-form-label text-end">Grand Total:</label>
+                            <div class="col-sm-6">
+                                <label id="summary_grand_total"></label>
+                            </div>
                         </div>
-                        <div class="row border-bottom">
-                            <div class="col-sm-1">1</div>
-                            <div class="col-sm-5">Sugar</div>
-                            <div class="col-sm-2">35</div>
-                            <div class="col-sm-2">10.00 Kg</div>
-                            <div class="col-sm-2">350</div>
+                        <div class="row mb-3">
+                            <label for="message-text" class="col-sm-6 col-form-label text-end">Payment Type:</label>
+                            <div class="col-sm-6">
+                                <select id="payment_type" class="form-select" aria-label="Default select example">
+                                    <option selected value="CASH">Cash</option>
+                                    <option value="BANK">Bank</option>
+                                </select>
+                            </div>
                         </div>
-                        <div class="row border-bottom">
-                            <div class="col-sm-1">2</div>
-                            <div class="col-sm-5">Rice</div>
-                            <div class="col-sm-2">35</div>
-                            <div class="col-sm-2">5.00 Kg</div>
-                            <div class="col-sm-2">175</div>
+                        <div class="row mb-3">
+                            <label for="message-text" class="col-sm-6 col-form-label text-end">Paid Amount:</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" id="summary_paid_amount"
+                                    onfocusout="calculateBalance(this)">
+                            </div>
                         </div>
-                    </div>
+                        <div class="row mb-3">
+                            <label for="message-text" class="col-sm-6 col-form-label text-end">Balance Amount:</label>
+                            <label class="col-sm-6" type="text" id="summary_balance_amount"></label>
+                        </div>
+                    </form>
                 </div>
-                <div class="row cl_blue">
-                    <div class="col-sm-12">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        Total
-                                    </div>
-                                    <div class="col-sm-6">
-                                        525
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        Discount
-                                    </div>
-                                    <div class="col-sm-6">
-                                        25
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        Grand Total
-                                    </div>
-                                    <div class="col-sm-6">
-                                        500
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        Payment
-                                    </div>
-                                    <div class="col-sm-6">
-                                        1000
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        Balance
-                                    </div>
-                                    <div class="col-sm-6">
-                                        500
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row cl_yellow">
-                    <div class="col-sm-12">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div class="row p-2 gy-1">
-                                    <div class="col-sm-4 col-md-4 col-lg-3 background_dark_blue rounded text-white cl_options m-1" >
-                                        Help
-                                    </div>
-                                    <div class="col-sm-4 col-md-4 col-lg-3 background_dark_blue rounded text-white cl_options m-1" >
-                                        Return
-                                    </div>
-                                    <div class="col-sm-4 col-md-4 col-lg-3 background_dark_blue rounded text-white cl_options m-1" >
-                                        Sample
-                                    </div>
-                                    <div class="col-sm-4 col-md-4 col-lg-3 background_dark_blue rounded text-white cl_options m-1" >
-                                        Edit
-                                    </div>
-                                    <div class="col-sm-4 col-md-4 col-lg-3 background_dark_blue rounded text-white cl_options m-1" >
-                                        Discount
-                                    </div>
-                                    <div class="col-sm-4 col-md-4 col-lg-3 background_dark_blue rounded text-white cl_options m-1" >
-                                        Previous
-                                    </div>
-                                    <div class="col-sm-4 col-md-4 col-lg-3 background_dark_blue rounded text-white cl_options m-1" >
-                                        Next
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="row p-2 gy-1">
-                                    <div class="col-sm-4 col-md-4 col-lg-3 background_dark_blue rounded text-white cl_options m-1" >
-                                        1
-                                    </div>
-                                    <div class="col-sm-4 col-md-4 col-lg-3 background_dark_blue rounded text-white cl_options m-1" >
-                                        2
-                                    </div>
-                                    <div class="col-sm-4 col-md-4 col-lg-3 background_dark_blue rounded text-white cl_options m-1" >
-                                        3
-                                    </div>
-                                    <div class="col-sm-4 col-md-4 col-lg-3 background_dark_blue rounded text-white cl_options m-1" >
-                                        4
-                                    </div>
-                                    <div class="col-sm-4 col-md-4 col-lg-3 background_dark_blue rounded text-white cl_options m-1" >
-                                        5
-                                    </div>
-                                    <div class="col-sm-4 col-md-4 col-lg-3 background_dark_blue rounded text-white cl_options m-1" >
-                                        6
-                                    </div>
-                                    <div class="col-sm-4 col-md-4 col-lg-3 background_dark_blue rounded text-white cl_options m-1" >
-                                        7
-                                    </div>
-                                    <div class="col-sm-4 col-md-4 col-lg-3 background_dark_blue rounded text-white cl_options m-1" >
-                                        8
-                                    </div>
-                                    <div class="col-sm-4 col-md-4 col-lg-3 background_dark_blue rounded text-white cl_options m-1" >
-                                        9
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="submitOrder()"
+                        data-bs-dismiss="modal">Generate
+                        Invoice</button>
                 </div>
             </div>
-            <div class="col-sm-1 cl_category_tag text-end">
-                <div class="row height_10">
-                    <div class="col-sm-12 ">
+        </div>
+    </div>
+
+    <!--Barcode duplicate Confirmation Form-->
+    <div class="modal fade" id="barcode_duplicate_modal" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-lg modal-dialog modal-dialog-scrollable modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Duplicate Products Found</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="barcode_duplicate_modal_body">
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Temporary Save load-->
+    <div class="modal fade" id="load_temp_order" tabindex="-1" aria-labelledby="load_temp_order_title"
+        aria-hidden="true">
+        <div class="modal-lg modal-dialog modal-dialog-scrollable modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="load_temp_order_title">Temporary Orders</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="load_temp_order_body">
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fw-bolder position-fixed top-0 end-0 p-3 d-flex justify-content-center align-items-center w-100"
+        style="z-index: 11">
+        <div id="successToast" style="border: 2px solid white;" data-bs-delay="1000" data-bs-autohide="true"
+            data-bs-animate="true" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header text-white" style="background-color:#198754;">
+                <!--<img src="..." class="rounded me-2" alt="...">-->
+                <strong id="toast_header" class="me-auto">Success</strong>
+                <!--<small>11 mins ago</small>-->
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div id="successToast_message" class="toast-body" style="background-color:white;">
+                Hello, world! This is a toast message.
+            </div>
+        </div>
+    </div>
+    <div class="fw-bolder position-fixed top-0 end-0 p-3 d-flex justify-content-center align-items-center w-100"
+        style="z-index: 11">
+        <div id="errorToast" data-bs-delay="1000" data-bs-autohide="true" data-bs-animate="true" class="toast hide"
+            role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header text-white" style="background-color:#dc3545;">
+                <!--<img src="..." class="rounded me-2" alt="...">-->
+                <strong id="toast_header" class="me-auto">Error</strong>
+                <!--<small>11 mins ago</small>-->
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div id="errorToast_message" class="toast-body" style="background-color:white;">
+                Hello, world! This is a toast message.
+            </div>
+        </div>
+    </div>
+    <div class="fw-bolder position-fixed top-0 end-0 p-3 d-flex justify-content-center align-items-center w-100"
+        style="z-index: 11">
+        <div id="warningToast" style="border: 2px solid white;" data-bs-delay="1000" data-bs-autohide="true"
+            data-bs-animate="true" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header text-white" style="background-color:#ffc107;">
+                <!--<img src="..." class="rounded me-2" alt="...">-->
+                <strong id="toast_header" class="me-auto">Warning</strong>
+                <!--<small>11 mins ago</small>-->
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div id="warningToast_message" class="toast-body" style="background-color:white;">
+                Hello, world! This is a toast message.
+            </div>
+        </div>
+    </div>
+
+
+    <!--Main Container-->
+    <div class="container-fluid height_100">
+        <!-- Header -->
+        <div class="row header_container align-content-center height_10" style="background-color: #0a49b3 !important;">
+            <div class="col-sm-7">
+                <div class="row container text-center fw-bold">
+                    <nav class="navbar navbar-expand-lg bg-light navbar-dark"
+                        style="background-color: #0a49b3 !important;">
+                        <a class="navbar-brand fw-bolder" href="#" style="font-size: 2rem;">Skyway</a>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav mr-auto">
+                                <li class="nav-item" style="margin-left: 2rem;">
+                                    <a class="nav-link" href="#">Sales List</a>
+                                </li>
+                                <li class="nav-item active" style="margin-left: 2rem;">
+                                    <a class="nav-link" href="#">New Invoice</a>
+                                </li>
+                                <li class="nav-item" style="margin-left: 2rem;">
+                                    <a class="nav-link" href="#">Items List</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+            <div class="row col-sm-5 text-center">
+                <div class="row container text-center">
+                    <nav class="navbar navbar-expand-lg bg-light navbar-dark"
+                        style="background-color: #0a49b3 !important;">
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav mr-auto">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link" href="#" id="navbarDropdown" role="button"
+                                        data-bs-toggle="dropdown" aria-expanded="false" onclick="loadTempOrders()">
+                                        Hold List<span id="temp_order_count"
+                                            class="position-absolute top-10 start-100 translate-middle badge rounded-pill bg-danger">
+                                        </span>
+                                    </a>
+                                    <ul id="load_temp_order_body_1"
+                                        style="width: 40vw;margin-top: 18px;border-radius: 0px;border: 1px solid #0a49b3;"
+                                        class="dropdown-menu dropdown-menu-end p-2" aria-labelledby="navbarDropdown">
+                                    </ul>
+                                </li>
+                                <li class="nav-item active" style="margin-left: 2rem;" >
+                                    <a class="nav-link" href="#">Dashboard</a>
+                                </li>
+                                <li class="nav-item" style="margin-left: 2rem;">
+                                    <a class="nav-link" href="#">Admin</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="height: 2%;">
+            <div class="row">
+                <div class="col"></div>
+            </div>
+        </div>
+        <!-- Shopping Cart-->
+        <div class="container-fluid px-4 height_80">
+            <div class="row gx-5 height_100">
+                <div class="col-sm-7 height_100">
+                    <div class="p-3 bg-light height_100" style="
+                    box-shadow: 1px 1px 10px 1px #8888884f;border-top: 4px solid #677D80;">
+                        <div class="row" style="height:20%">
+                            <div class="fs-7">
+                                <i class="bi bi-cart-fill" style="font-size: 1.5rem;"></i>
+                                <span style="color:#7F96A2;font-weight: bolder;">Sales Invoice</span>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text"><i class="bi bi-phone-fill"></i></span>
+                                        <input id="customerMobileNumber" type="text" class="form-control"
+                                            aria-label="Mobile Number" placeholder="Mobile Number">
+                                    </div>
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
+                                        <input id="customerName" type="text" class="form-control"
+                                            aria-label="Customer Name" placeholder="Customer Name">
+                                        <!-- <span class="input-group-text">.00</span> -->
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text"><i class="bi bi-upc"></i></span>
+                                        <input onfocusout="searchWithBarcode()" id="barcode" type="text"
+                                            class="form-control" aria-label="Barcode" placeholder="Barcode"
+                                            tabindex="1">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row cl_shopping_cart_container ">
+                            <div class="col-sm-12">
+                                <div class="cart-header row border-bottom"
+                                    style="background-color: #0749B9;color: white;">
+                                    <div class="col-sm-1">Sl No</div>
+                                    <div class="col-sm-4">Description</div>
+                                    <div class="col-sm-2">Qty</div>
+                                    <div class="col-sm-2">Unit Price</div>
+                                    <div class="col-sm-2">Total</div>
+                                    <div class="col-sm-1"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                                            <path
+                                                d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                                        </svg></div>
+                                </div>
+                                <div id="shoppingcart_items" class="shoppingcart_items">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Summary Amount -->
+                        <div class="row cl_bottom_options" style="background-color: #D3D6DD;">
+                            <div class="col-sm-12">
+                                <div class="row p-2 gy-1 fw-bolder">
+                                    <div class="col-sm-6 col-md-6 col-lg-3 rounded">
+                                        <!--<div class="row">-->
+                                        <div class="col">
+                                            Quantity
+                                        </div>
+                                        <div class="col">
+                                            <label id="total_quantity"></label>
+                                        </div>
+                                        <!--</div>-->
+                                    </div>
+                                    <div class="col-sm-6 col-md-6 col-lg-3 rounded">
+                                        <!--<div class="row">-->
+                                        <div class="col">
+                                            Total
+                                        </div>
+                                        <div class="col">
+                                            <label id="total_amount"></label>
+                                        </div>
+                                        <!--</div>-->
+                                    </div>
+                                    <div class="col-sm-6 col-md-6 col-lg-3 rounded">
+                                        <!--<div class="row">-->
+                                        <div class="col">
+                                            Discount
+                                        </div>
+                                        <div class="col">
+                                            <input type="text" value="0" style="width: 100%;" id="discount_amount"
+                                                onfocusout="applyDiscount(this)">
+                                        </div>
+                                        <!--</div>-->
+                                    </div>
+                                    <div class="col-sm-6 col-md-6 col-lg-3 rounded">
+                                        <!--<div class="row">-->
+                                        <div class="col">
+                                            Grand Total
+                                        </div>
+                                        <div class="col">
+                                            <label id="grand_total_amount"></label>
+                                        </div>
+                                        <!--</div>-->
+                                    </div>
+                                </div>
+                                <div class="row p-2 gy-1">
+                                    <div class="col-sm-6 col-md-6 col-lg-3">
+                                        <div style="background-color: #C80048;" class="btn btn-dark w-100"
+                                            onclick="saveOrderAsDraft()">Hold</div>
+
+                                    </div>
+                                    <div class="col-sm-6 col-md-6 col-lg-3">
+                                        <div style="background-color: #0073ED;" class="btn btn-dark w-100"
+                                            onclick="clearCart()">Clear</div>
+                                    </div>
+                                    <div class="col-sm-6 col-md-6 col-lg-3">
+                                        <div style="background-color: #05703C;" class="btn btn-dark w-100"
+                                            onclick="onLoadWrapper()">Refresh Stock</div>
+                                    </div>
+                                    <div class="col-sm-6 col-md-6 col-lg-3">
+                                        <div style="background-color: #605CA6;" id="pay_btn" class="btn btn-dark w-100"
+                                            onclick="setPaymentSummary()" data-bs-toggle="modal">Pay</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
                     </div>
                 </div>
-                <div class="row height_10">
-                    <div class="col-sm-12 background_dark_blue">
-                        All
-                    </div>
-                </div>
-                <div class="row height_10">
-                    <div class="col-sm-12 background_dark_blue">
-                        Vegetables
-                    </div>
-                </div>
-                <div class="row height_10">
-                    <div class="col-sm-12 background_dark_blue">
-                        Fruits
-                    </div>
-                </div>
-                <div class="row height_10">
-                    <div class="col-sm-12 background_dark_blue">
-                        Cosmetics
-                    </div>
-                </div>
-                <div class="row height_10">
-                    <div class="col-sm-12 background_dark_blue">
-                        Food
-                    </div>
-                </div>
-                <div class="row height_10">
-                    <div class="col-sm-12 background_dark_blue">
-                        Grocery
-                    </div>
-                </div>
-                <div class="row height_10">
-                    <div class="col-sm-12 background_dark_blue">
-                        Bakery
-                    </div>
-                </div>
-                <div class="row height_10">
-                    <div class="col-sm-12 background_dark_blue">
-                        Detergent
-                    </div>
-                </div>
-                <div class="row height_10">
-                    <div class="col-sm-12 background_dark_blue">
-                        Fish
+                <div class="col height_90">
+                    <div class="height_100 p-3" style="
+                    box-shadow: 1px 1px 10px 1px #8888884f;
+                    border-top: 4px solid #60B1AD;background-color: #FFFFFE;">
+                        <div class="height_100">
+                            <!--Seach Products-->
+                            <div class="row" style="height: 10%;padding: 8px;">
+                                <div class="col-sm-6">
+                                    <select class="form-select" aria-label="Default select example">
+                                        <option selected>All Catagories</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-6">
+
+                                    <div class="input-group mb-3">
+                                        <input onkeyup="searchProducts(this)" id="keyword_search" type="text"
+                                            class="form-control" placeholder="Filter Items" aria-label="Search"
+                                            aria-describedby="button-addon2">
+                                        <button onclick="resetSearchString()"
+                                            style="background-color: #60B1AD;color: #EDF1F4;"
+                                            class="btn btn-outline-secondary" type="button"
+                                            id="button-addon2">All</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Product List-->
+                            <div class="row" style="height: 90%;padding: 8px;">
+                                <div class="products_section" id="products_section">
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-4 ">
-                <div class="row cl_search_area">
-                    <input type="text" placeholder="Search" />
-                </div>
-                <div class="row products_section" style="overflow: scroll;font-size: small;">
-                    <div class="row">
-                        <div class="col-sm-6 col-md-4 col-lg-3">
-                            <div class="card">
-                                <img src="https://imagemaster.fraazo.com/fraazo-master/products/BONI11.png?width=512&height=512"
-                                    class="card-img-top" alt="Onion">
-                                <div class="card-body font">
-                                    <p class="card-text text-muted">Onion</p>
-                                    <p class="card-text">60 - 1Kg</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-4 col-lg-3">
-                            <div class="card">
-                                <img src="https://imagemaster.fraazo.com/fraazo-master/products/BONI11.png?width=512&height=512"
-                                    class="card-img-top" alt="Onion">
-                                <div class="card-body font">
-                                    <p class="card-text text-muted">Onion</p>
-                                    <p class="card-text">60 - 1Kg</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-4 col-lg-3">
-                            <div class="card">
-                                <img src="https://imagemaster.fraazo.com/fraazo-master/products/BONI11.png?width=512&height=512"
-                                    class="card-img-top" alt="Onion">
-                                <div class="card-body font">
-                                    <p class="card-text text-muted">Onion</p>
-                                    <p class="card-text">60 - 1Kg</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-4 col-lg-3">
-                            <div class="card">
-                                <img src="https://imagemaster.fraazo.com/fraazo-master/products/BONI11.png?width=512&height=512"
-                                    class="card-img-top" alt="Onion">
-                                <div class="card-body font">
-                                    <p class="card-text text-muted">Onion</p>
-                                    <p class="card-text">60 - 1Kg</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-4 col-lg-3">
-                            <div class="card">
-                                <img src="https://imagemaster.fraazo.com/fraazo-master/products/BONI11.png?width=512&height=512"
-                                    class="card-img-top" alt="Onion">
-                                <div class="card-body font">
-                                    <p class="card-text text-muted">Onion</p>
-                                    <p class="card-text">60 - 1Kg</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-4 col-lg-3">
-                            <div class="card">
-                                <img src="https://imagemaster.fraazo.com/fraazo-master/products/BONI11.png?width=512&height=512"
-                                    class="card-img-top" alt="Onion">
-                                <div class="card-body font">
-                                    <p class="card-text text-muted">Onion</p>
-                                    <p class="card-text">60 - 1Kg</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-4 col-lg-3">
-                            <div class="card">
-                                <img src="https://imagemaster.fraazo.com/fraazo-master/products/BONI11.png?width=512&height=512"
-                                    class="card-img-top" alt="Onion">
-                                <div class="card-body font">
-                                    <p class="card-text text-muted">Onion</p>
-                                    <p class="card-text">60 - 1Kg</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-4 col-lg-3">
-                            <div class="card">
-                                <img src="https://imagemaster.fraazo.com/fraazo-master/products/BONI11.png?width=512&height=512"
-                                    class="card-img-top" alt="Onion">
-                                <div class="card-body font">
-                                    <p class="card-text text-muted">Onion</p>
-                                    <p class="card-text">60 - 1Kg</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-4 col-lg-3">
-                            <div class="card">
-                                <img src="https://imagemaster.fraazo.com/fraazo-master/products/BONI11.png?width=512&height=512"
-                                    class="card-img-top" alt="Onion">
-                                <div class="card-body font">
-                                    <p class="card-text text-muted">Onion</p>
-                                    <p class="card-text">60 - 1Kg</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        </div>
+        <!--Footer-->
+        <div class="row" style="height: 3%; background-color: #EDF1F4;">
+            <div class="row">
+                <div class="col"></div>
+            </div>
+        </div>
+        <div class="row height_5" style="background-color: rgb(255, 255, 255);">
+            <div class="row">
+                <div class="col">Copyright</div>
             </div>
         </div>
     </div>

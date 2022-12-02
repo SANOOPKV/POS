@@ -1,0 +1,24 @@
+{
+  "categories": [
+    {
+      "category_id": "MQ--",
+      "category_name": "Beverage"
+    },
+    {
+      "category_id": "Mg--",
+      "category_name": "Crackers "
+    },
+    {
+      "category_id": "NQ--",
+      "category_name": "Noodiles"
+    },
+    {
+      "category_id": "NA--",
+      "category_name": "Potato Chips "
+    },
+    {
+      "category_id": "Mw--",
+      "category_name": "Sauses"
+    }
+  ]
+}

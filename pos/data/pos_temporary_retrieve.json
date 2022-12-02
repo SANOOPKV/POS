@@ -1,0 +1,114 @@
+{
+    "temporary_save": [
+      {
+        "success": 1,
+        "message": "success"
+      },
+      [
+        {
+          "customer": "Ditya"
+        },
+        {
+          "style": "stock",
+          "item_id": "MjI-",
+          "item_name": "DM SPAGHETTI SAUCE SWEET STYLE 250GM",
+          "barcodes": [
+            {
+              "barcode": "4800024555779",
+              "stk_qty": 24,
+              "brd_unit_rate": "3.95"
+            }
+          ],
+          "unit_rate": "3.95"
+        },
+        {
+          "style": "stock",
+          "item_id": "MjA-",
+          "item_name": "DM SPAGHETTI SAUCE FILIPINO  STYLE 500GM",
+          "barcodes": [
+            {
+              "barcode": "48000245800016",
+              "stk_qty": 276,
+              "brd_unit_rate": "7.08"
+            }
+          ],
+          "unit_rate": "7.08"
+        },
+        {
+          "style": "stock",
+          "item_id": "MjI-",
+          "item_name": "DM SPAGHETTI SAUCE SWEET STYLE 250GM",
+          "barcodes": [
+            {
+              "barcode": "4800024555779",
+              "stk_qty": 24,
+              "brd_unit_rate": "3.95"
+            }
+          ],
+          "unit_rate": "3.95"
+        }
+      ],
+      [
+        {
+          "customer": "Neethu"
+        },
+        {
+          "style": "stock",
+          "item_id": "MjA-",
+          "item_name": "DM SPAGHETTI SAUCE FILIPINO  STYLE 500GM",
+          "barcodes": [
+            {
+              "barcode": "48000245800016",
+              "stk_qty": 276,
+              "brd_unit_rate": "7.08"
+            }
+          ],
+          "unit_rate": "7.08"
+        },
+        {
+          "style": "stock",
+          "item_id": "MjI-",
+          "item_name": "DM SPAGHETTI SAUCE SWEET STYLE 250GM",
+          "barcodes": [
+            {
+              "barcode": "4800024555779",
+              "stk_qty": 24,
+              "brd_unit_rate": "3.95"
+            }
+          ],
+          "unit_rate": "3.95"
+        }
+      ],
+      [
+        {
+          "customer": "Sangeetha"
+        },
+        {
+          "style": "stock",
+          "item_id": "MjA-",
+          "item_name": "DM SPAGHETTI SAUCE FILIPINO  STYLE 500GM",
+          "barcodes": [
+            {
+              "barcode": "48000245800016",
+              "stk_qty": 276,
+              "brd_unit_rate": "7.08"
+            }
+          ],
+          "unit_rate": "7.08"
+        },
+        {
+          "style": "stock",
+          "item_id": "MjI-",
+          "item_name": "DM SPAGHETTI SAUCE SWEET STYLE 250GM",
+          "barcodes": [
+            {
+              "barcode": "4800024555779",
+              "stk_qty": 24,
+              "brd_unit_rate": "3.95"
+            }
+          ],
+          "unit_rate": "3.95"
+        }
+      ]
+    ]
+  }
